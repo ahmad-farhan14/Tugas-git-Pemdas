@@ -42,29 +42,37 @@ data_panen = {
 }
 
 # no 1
-for d in data_panen:
-    print(d)
+print('no 1')
+for lokasi, data in data_panen.items():
+    print("Nama Lokasi :", data['nama_lokasi'])
+    print("Hasil Panen :", data['hasil_panen'])
 
 # no 2
-total_jagung = 0
-for d in data_panen:
-    total_jagung += d["jagung"]
-print("Total Jagung:", total_jagung)
+print('no 2')
+jagung_lokasi2 = data_panen['lokasi2']['hasil_panen']['jagung']
+print("Jumlah Hasil Panen Jagung Lokasi 2:", jagung_lokasi2)
 
 # no 3
-print("Nama Lokasi ke-3:", data_panen[2]["lokasi"])
+print("Nama Lokasi 3:", data_panen['lokasi3']['nama_lokasi'])
 
 # no 4
 padi = {}
 kedelai = {}
+print('no 4')
+for lokasi, data in data_panen.items():
+    padi[data['nama_lokasi']] = data['hasil_panen']['padi']
+    kedelai[data['nama_lokasi']] = data['hasil_panen']['kedelai']
 
-for d in data_panen:
-    padi[d["lokasi"]] = d["padi"]
-    kedelai[d["lokasi"]] = d["kedelai"]
+print("Data Padi    :", padi)
+print("Data Kedelai :", kedelai)
 
 # no 5
-for d in data_panen:
-    if d["padi"] > 1300 or d["jagung"] > 800:
-        print(d["lokasi"], ": Memerlukan perhatian khusus")
+print('no.5')
+for data in data_panen.values():
+    padi_val = data['hasil_panen']['padi']
+    jagung_val = data['hasil_panen']['jagung']
+
+    if padi_val > 1300 or jagung_val > 800:
+        print(data['nama_lokasi'], ": Memerlukan perhatian khusus")
     else:
-        print(d["lokasi"], ": Kondisi baik")
+        print(data['nama_lokasi'], ": Kondisi baik")
